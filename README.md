@@ -5,53 +5,6 @@ Aplikasi ini merupakan proyek UAS mata kuliah **Pengolahan Citra Digital (PCGK)*
 
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
-
-### Prerequisites
-- Python 3.7+
-- pip (Python package manager)
-
-### Langkah 1: Install Dependencies
-Buka Command Prompt / PowerShell di folder project, lalu jalankan:
-```bash
-pip install -r requirements
-```
-
-### Langkah 2: Jalankan Aplikasi
-```bash
-cd src
-python web.py
-```
-
-### Langkah 3: Buka di Browser
-- Aplikasi akan running di: `http://127.0.0.1:5000`
-- Buka browser Anda dan masuk ke URL tersebut
-- Atau klik link yang muncul di terminal
-
-### Langkah 4: Gunakan Aplikasi
-1. Upload gambar jalan (JPG / PNG)
-2. Klik tombol "Analisis Sekarang"
-3. Tunggu hasil analisis
-4. Lihat visualisasi proses citra & statistik kerusakan
-
----
-
-## 📋 Struktur Folder
-```
-UAS-PCGK/
-├── src/
-│   ├── main.py         # Logic pengolahan citra
-│   └── web.py          # Flask web application
-├── templates/
-│   └── index.html      # Frontend HTML
-├── static/
-│   └── style.css       # Styling CSS
-├── requirements        # Python dependencies
-└── README.md          # Dokumentasi
-```
-
----
-
 ## 🎯 Tujuan Proyek
 - Mendeteksi keberadaan lubang pada permukaan jalan dari citra digital
 - Menghitung tingkat kerusakan jalan berdasarkan luas area lubang
@@ -127,4 +80,5 @@ PCGK-UAS/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+
 

@@ -52,17 +52,17 @@ Aplikasi ini menerapkan tahapan pengolahan citra digital sebagai berikut:
 ---
 
 ## 📂 Struktur Folder
-PCGK UAS/
+PCGK-UAS/
 │
-├── app.py # Aplikasi web (Streamlit)
+├── UI/              
+    └── app.py
+    └── css
 ├── src/
-│ └── main.py # Logika pengolahan citra
+│   └── main.py       
 │
-├── dataset/ # Dataset citra (tidak diupload ke GitHub)
-│
-├── .gitignore
-├── README.md
-└── requirements.txt
+├── .gitignore          
+├── requirements.txt    
+└── README.md           
 
 ---
 
@@ -71,3 +71,4 @@ Dataset citra **tidak disertakan di repository GitHub** sesuai ketentuan.
 Gunakan citra jalan pribadi atau dataset publik untuk pengujian.
 
 ---
+

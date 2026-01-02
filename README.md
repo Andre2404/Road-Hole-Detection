@@ -52,23 +52,14 @@ Aplikasi ini menerapkan tahapan pengolahan citra digital sebagai berikut:
 ---
 
 ## 📂 Struktur Folder
+
+```text
 PCGK-UAS/
-│
-├── UI/              
-    └── app.py
-    └── css
+├── app.py
 ├── src/
-│   └── main.py       
-│
-├── .gitignore          
-├── requirements.txt    
-└── README.md           
-
----
-
-## 🚫 Dataset
-Dataset citra **tidak disertakan di repository GitHub** sesuai ketentuan.  
-Gunakan citra jalan pribadi atau dataset publik untuk pengujian.
-
----
+│   └── main.py
+├── dataset/
+├── .gitignore
+├── requirements.txt
+└── README.md
 

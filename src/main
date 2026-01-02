@@ -142,7 +142,11 @@ plt.axis("off")
 
 plt.subplot(2, 3, 6)
 plt.imshow(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+<<<<<<< HEAD
 plt.title("Hasil Deteksi Lubang")
+=======
+plt.title("Hasil udah Deteksi Lubang")
+>>>>>>> d672077f1d7197400a84b83ef846525c3144a6a5
 plt.axis("off")
 
 plt.tight_layout()

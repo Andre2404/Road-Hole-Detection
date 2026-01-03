@@ -199,7 +199,7 @@ elif input_mode == "📸 Kamera":
     cam = st.camera_input("Ambil foto...")
     if cam: input_src = cam
 
-# ==========================================
+    # ==========================================
 # 7. LOGIKA UTAMA & VISUALISASI
 # ==========================================
 if input_src:
@@ -285,6 +285,7 @@ if input_src:
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
+
 
                 # --- DATA TEKNIS ---
                 with st.expander("📄 Data Teknis Lengkap"):

@@ -200,91 +200,91 @@ elif input_mode == "📸 Kamera":
     if cam: input_src = cam
 
     # ==========================================
-# 7. LOGIKA UTAMA & VISUALISASI
-# ==========================================
-if input_src:
-    start = True
-    if input_mode == "📁 Upload File":
-        start = st.button("🔍 MULAI ANALISIS", type="primary")
-
-    if start and model:
-        input_src.seek(0)
-        with st.spinner("Memproses data visual..."):
-            
-            # PANGGIL FUNGSI LOGIC
-            data = logic.process_analysis(model, input_src, conf, clahe, ratio)
-            
-            if data:
-                st.divider()
+    # 7. LOGIKA UTAMA & VISUALISASI
+    # ==========================================
+    if input_src:
+        start = True
+        if input_mode == "📁 Upload File":
+            start = st.button("🔍 MULAI ANALISIS", type="primary")
+    
+        if start and model:
+            input_src.seek(0)
+            with st.spinner("Memproses data visual..."):
                 
-                # --- VISUALISASI GAMBAR ---
-                st.markdown("##### 🖼️ Visualisasi")
-                col_res1, col_res2 = st.columns(2)
-                with col_res1:
-                    st.image(input_src, caption="Asli", use_container_width=True)
-                with col_res2:
-                    st.image(data['img'], caption="Deteksi AI", use_container_width=True)
-
-                st.markdown("<br>", unsafe_allow_html=True)
-
-                # --- 4 KARTU STATISTIK (WARNA SERAGAM) ---
-                st.markdown("##### 📊 Laporan")
-                c1, c2, c3, c4 = st.columns(4)
+                # PANGGIL FUNGSI LOGIC
+                data = logic.process_analysis(model, input_src, conf, clahe, ratio)
                 
-                # Logic Warna Status
-                warna_status = "#2E7D32" # Hijau (Default/Aman)
-                
-                if data['code'] == "WARN" or data['code'] == "MEDIUM":
-                     warna_status = "#F9A825" # Kuning (Waspada)
-                
-                if data['code'] == "CRITICAL":
-                     warna_status = "#C62828" # Merah (Bahaya)
-
-                # Kartu 1: Kondisi
-                with c1:
-                    st.markdown(f"""
-                    <div class="stat-card" style="border-top: 5px solid {warna_status};">
-                        <div class="stat-label">Kondisi</div>
-                        <div class="stat-value" style="color:{warna_status};">{data['kondisi']}</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                # Kartu 2: Kerusakan
-                with c2:
-                    st.markdown(f"""
-                    <div class="stat-card" style="border-top: 5px solid {warna_status};">
-                        <div class="stat-label">Kerusakan</div>
-                        <div class="stat-value" style="color:{warna_status};">{data['pct']:.2f}%</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                # Kartu 3: Total Titik
-                with c3:
-                    st.markdown(f"""
-                    <div class="stat-card" style="border-top: 5px solid {warna_status};">
-                        <div class="stat-label">Jumlah Titik</div>
-                        <div class="stat-value" style="color:{warna_status};">{data['total']}</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                # Kartu 4: Rincian
-                with c4:
-                    stats = data['stats']
-                    st.markdown(f"""
-                    <div class="stat-card" style="align-items: flex-start; border-top: 5px solid {warna_status};">
-                        <div class="detail-box">
-                            <div class="detail-row">
-                                <span>🔴 Besar</span> <b style="color:{warna_status}">{stats['besar']}</b>
-                            </div>
-                            <div class="detail-row">
-                                <span>🟡 Sedang</span> <b style="color:{warna_status}">{stats['sedang']}</b>
-                            </div>
-                            <div class="detail-row">
-                                <span>🟢 Kecil</span> <b style="color:{warna_status}">{stats['kecil']}</b>
+                if data:
+                    st.divider()
+                    
+                    # --- VISUALISASI GAMBAR ---
+                    st.markdown("##### 🖼️ Visualisasi")
+                    col_res1, col_res2 = st.columns(2)
+                    with col_res1:
+                        st.image(input_src, caption="Asli", use_container_width=True)
+                    with col_res2:
+                        st.image(data['img'], caption="Deteksi AI", use_container_width=True)
+    
+                    st.markdown("<br>", unsafe_allow_html=True)
+    
+                    # --- 4 KARTU STATISTIK (WARNA SERAGAM) ---
+                    st.markdown("##### 📊 Laporan")
+                    c1, c2, c3, c4 = st.columns(4)
+                    
+                    # Logic Warna Status
+                    warna_status = "#2E7D32" # Hijau (Default/Aman)
+                    
+                    if data['code'] == "WARN" or data['code'] == "MEDIUM":
+                         warna_status = "#F9A825" # Kuning (Waspada)
+                    
+                    if data['code'] == "CRITICAL":
+                         warna_status = "#C62828" # Merah (Bahaya)
+    
+                    # Kartu 1: Kondisi
+                    with c1:
+                        st.markdown(f"""
+                        <div class="stat-card" style="border-top: 5px solid {warna_status};">
+                            <div class="stat-label">Kondisi</div>
+                            <div class="stat-value" style="color:{warna_status};">{data['kondisi']}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
+                    # Kartu 2: Kerusakan
+                    with c2:
+                        st.markdown(f"""
+                        <div class="stat-card" style="border-top: 5px solid {warna_status};">
+                            <div class="stat-label">Kerusakan</div>
+                            <div class="stat-value" style="color:{warna_status};">{data['pct']:.2f}%</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+    
+                    # Kartu 3: Total Titik
+                    with c3:
+                        st.markdown(f"""
+                        <div class="stat-card" style="border-top: 5px solid {warna_status};">
+                            <div class="stat-label">Jumlah Titik</div>
+                            <div class="stat-value" style="color:{warna_status};">{data['total']}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+    
+                    # Kartu 4: Rincian
+                    with c4:
+                        stats = data['stats']
+                        st.markdown(f"""
+                        <div class="stat-card" style="align-items: flex-start; border-top: 5px solid {warna_status};">
+                            <div class="detail-box">
+                                <div class="detail-row">
+                                    <span>🔴 Besar</span> <b style="color:{warna_status}">{stats['besar']}</b>
+                                </div>
+                                <div class="detail-row">
+                                    <span>🟡 Sedang</span> <b style="color:{warna_status}">{stats['sedang']}</b>
+                                </div>
+                                <div class="detail-row">
+                                    <span>🟢 Kecil</span> <b style="color:{warna_status}">{stats['kecil']}</b>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        """, unsafe_allow_html=True)
 
 
                 # --- DATA TEKNIS ---

@@ -75,28 +75,15 @@ Aplikasi ini menerapkan tahapan pengolahan citra digital yang telah dimodernisas
 
 Proyek ini dikerjakan oleh 12 anggota dengan pembagian tugas spesifik pada modul *Deep Learning*, *Computer Vision Logic*, *Frontend Interface*, dan *Data Reporting*.
 
-1. Khairunnisa Labibah
-2. Andre Saputra
-3. Andhika Pratama
+1. Andre Saputra
+2. Khairunnisa Labibah
+3. Sabtina Arinda Inayah
 4. Adzka Dzikri
 5. M. Farid Febriansyah
 6. Primanda Suryawan
-7. Sabtina Arinda Inayah
+7. Andhika Pratama
 8. Hafizh 'Abid Khalish
 9. Dewi Siti Jamilah
 10. Faiz Lintang Prawira
 11. Sunan Maulana
 12. Rifki Destrizal Nugraha
-
-## 📂 Struktur Folder
-
-road hole detection/
-├── 📂 notebook/
-│    └── 📄 Logic_Yolov8.ipynb
-├── 📂 __pycache__/          
-├── 📄 .gitignore
-├── 📄 best.pt
-├── 📄 logic.py
-├── 📄 README.md
-├── 📄 requirements.txt
-└── 📄 web.py

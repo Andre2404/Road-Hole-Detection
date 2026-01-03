@@ -97,7 +97,7 @@ def process_analysis(model, input_file, conf_threshold, use_clahe, aspect_ratio_
                 crop_rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
                 crop_list.append(crop_rgb)
                 
-                # --- PROSES OPENCV ---
+                # ---PROSES OPENCV---
                 gray_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
                 blurred_roi = cv2.GaussianBlur(gray_roi, (5, 5), 0)
                 _, thresh_roi = cv2.threshold(blurred_roi, 85, 255, cv2.THRESH_BINARY_INV)

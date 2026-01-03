@@ -25,7 +25,7 @@ def load_model():
         return None, "File Model Tidak Ditemukan!"
 
 # ==========================================
-# 2. IMAGE ENHANCEMENT
+# 2.IMAGE ENHANCEMENT
 # ==========================================
 def apply_clahe(image):
     lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)

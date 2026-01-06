@@ -168,8 +168,7 @@ with st.sidebar:
     ratio = st.slider("Filter Jarak (Rasio)", 5.0, 20.0, 12.0)
     clahe = st.checkbox("Mode Penajam (CLAHE)")
 
-
-    
+  
     st.markdown("---")
     with st.expander("ANGGOTA KELOMPOK 3"):
         st.markdown("""
@@ -186,7 +185,6 @@ with st.sidebar:
         11. **Sunan Maulana**
         12. **Rifki Destrizal Nugraha**
         """)
-
 # ==========================================
 # 6. INPUT SECTION
 # ==========================================

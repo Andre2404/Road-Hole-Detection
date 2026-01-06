@@ -286,8 +286,7 @@ elif input_mode == "📸 Kamera":
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
-
-
+                        
                 # --- DATA TEKNIS ---
                 with st.expander("📄 Data Teknis Lengkap"):
                     st.dataframe(data['df'], use_container_width=True)

@@ -156,4 +156,4 @@ def process_analysis(model, input_file, conf_threshold, use_clahe, aspect_ratio_
         "masks": debug_list, 
         "raw": raw_data,
         "stats": {"kecil": kecil, "sedang": sedang, "besar": besar}
-    }
+    } 

@@ -1,89 +1,76 @@
-﻿# 🛣️ Aplikasi Deteksi Jalan Berlubang  
-**Ujian Akhir Semester – Pengolahan Citra Digital**
+# Pothole Detection and Road Assessment System
+**Final Semester Project – Digital Image Processing**
 
-Aplikasi ini merupakan proyek UAS mata kuliah **Pengolahan Citra Digital (PCGK)** yang bertujuan untuk mendeteksi dan menganalisis kondisi jalan berlubang.
+This repository contains the source code for a computer vision application designed to detect, analyze, and classify road surface conditions. The system utilizes a hybrid approach combining Deep Learning (YOLOv8) and traditional Digital Image Processing techniques to provide quantitative assessments of road damage.
 
----
+## Project Overview
 
-## 🎯 Tujuan Proyek
+The primary objective of this project is to automate the inspection of road infrastructure. The application performs the following functions:
 
-* **Mendeteksi** keberadaan lubang pada permukaan jalan secara otomatis dari citra digital.
-* **Menghitung** tingkat kerusakan jalan berdasarkan persentase luas area lubang terhadap jalan.
-* **Mengklasifikasikan** kondisi jalan menjadi:
-    * 🟢 **Sangat Baik / Aman** (< 3% kerusakan)
-    * 🟡 **Rusak Sedang / Waspada** (3-15% kerusakan)
-    * 🔴 **Rusak Parah / Kritis** (> 15% kerusakan)
-* **Menampilkan** hasil analisis secara visual, informatif, dan *real-time* melalui antarmuka web modern.
+* **Automated Detection:** Identifies potholes on road surfaces using digital imagery.
+* **Quantitative Analysis:** Calculates the severity of damage based on the percentage of the pothole area relative to the total road surface.
+* **Safety Classification:** Categorizes road conditions into three specific safety levels:
+    * **Safe / Good Condition:** < 3% damage coverage.
+    * **Warning / Moderate Damage:** 3% - 15% damage coverage.
+    * **Critical / Severe Damage:** > 15% damage coverage.
+* **Visualization:** Provides a real-time, web-based interface for visual analysis and reporting.
 
----
+## Technical Methodology (Hybrid Pipeline)
 
-## 🧠 Metode Pengolahan Citra (Hybrid Pipeline)
+The system implements a modernized image processing pipeline designed for accuracy and performance:
 
-Aplikasi ini menerapkan tahapan pengolahan citra digital yang telah dimodernisasi:
+1.  **Image Standardization:** Auto-resizing of input images (maximum dimension of 1000px) to ensure optimal processing speed.
+2.  **Preprocessing (CLAHE):** Application of Contrast Limited Adaptive Histogram Equalization to enhance dark areas and clarify asphalt texture.
+3.  **YOLOv8 Inference:** Utilization of a custom-trained YOLOv8 model to detect the Region of Interest (ROI) and localize potholes.
+4.  **Gaussian Blur:** Noise reduction to smooth out asphalt granularity and minor debris.
+5.  **Inverse Thresholding:** Segmentation process to separate dark pothole features from the lighter road surface.
+6.  **Contour Detection:** Precise mapping of pothole boundaries.
+7.  **Aspect Ratio Filtering:** Elimination of false positives based on dimensional ratios.
+8.  **Condition Scoring:** Statistical calculation to determine the final road status.
 
-1.  **Auto-Resize** – Standarisasi ukuran citra (Max dimensi 1000px) untuk performa optimal.
-2.  **CLAHE (Preprocessing)** – Meningkatkan kontras area gelap agar tekstur aspal lebih jelas.
-3.  **YOLOv8 Inference (AI)** – Mendeteksi *Region of Interest (ROI)* atau lokasi keberadaan lubang.
-4.  **Gaussian Blur** – Menghilangkan *noise* (bintik halus/kerikil) pada area aspal.
-5.  **Inverse Thresholding** – Segmentasi memisahkan lubang (gelap) dari aspal (terang).
-6.  **Deteksi Kontur** – Menggambar garis tepi lubang secara presisi.
-7.  **Aspect Ratio Filter** – Mengeliminasi deteksi palsu (bukan lubang) berdasarkan rasio dimensi.
-8.  **Scoring Kondisi** – Perhitungan statistik total untuk penentuan status jalan.
+## Application Features
 
----
+### User Interface
+* **Streamlit Framework:** Built on a responsive, web-based interface.
+* **Flexible Input:** Supports drag-and-drop image uploads and direct camera input.
+* **Industrial Design:** Features a high-contrast professional theme suitable for field operations.
 
-## 🖥️ Fitur Aplikasi
+### Analytical Capabilities
+* **Real-time Assessment:** Immediate classification of road safety status (Safe/Warning/Critical).
+* **Precision Metrics:** Damage percentage calculated to two decimal places.
+* **Categorization:** Statistical breakdown of potholes by size (Small, Medium, Large).
 
-✨ **Modern & Responsive UI**
-* Upload citra jalan dengan drag-and-drop atau input Kamera langsung.
-* Desain **"Safety Theme"** (Black & Yellow) yang profesional sesuai standar industri.
-* Antarmuka *user-friendly* berbasis Streamlit.
+### Debugging and Visualization
+* **Layer Inspection:** Allows users to view intermediate processing stages, including RGB Crops, Binary Masks, and Contour Detection layers.
 
-📊 **Analisis Komprehensif**
-* Status kondisi jalan (Aman/Waspada/Bahaya).
-* Persentase kerusakan presisi hingga dua desimal.
-* Statistik jumlah lubang per kategori (Kecil/Sedang/Besar).
+### Data Management
+* **CSV Export:** Capability to download analysis results for external reporting and archival.
 
-🔬 **Visualisasi Proses (Debugging)**
-* Melihat proses di balik layar ("Dapur" Computer Vision).
-* Visualisasi layer: *Crop RGB*, *Binary Mask*, dan *Contour Detection*.
+## Technology Stack
 
-📥 **Export Data**
-* Unduh hasil analisis dalam format CSV untuk pelaporan.
-
----
-
-## ⚡ Tech Stack
-
-* **Backend & Frontend:** Python (Streamlit)
-* **Deep Learning:** Ultralytics YOLOv8 (Custom Trained)
+* **Frontend & Backend:** Python (Streamlit)
+* **Deep Learning:** Ultralytics YOLOv8 (Custom Trained Model)
 * **Image Processing:** OpenCV, NumPy
 * **Data Handling:** Pandas
 
----
+## Recommendations for Optimal Results
 
-## 💡 Tips Penggunaan
+To ensure the highest accuracy in detection and measurement, please adhere to the following guidelines:
 
-* Gunakan gambar jalan yang jelas untuk hasil terbaik.
-* Pastikan pencahayaan cukup; bayangan pohon yang terlalu gelap dapat mempengaruhi akurasi pengukuran area.
-* Foto tegak lurus ke permukaan jalan memberikan hasil perhitungan dimensi yang lebih akurat.
-* Gunakan resolusi minimal 640x480 pixel.
+* **Image Quality:** Use clear, high-definition images.
+* **Lighting:** Ensure the road surface is well-lit; avoid strong shadows (e.g., from trees) which may distort area calculations.
+* **Camera Angle:** Take photographs perpendicular to the road surface (top-down view) to minimize perspective distortion.
+* **Resolution:** Minimum recommended input resolution is 640x480 pixels.
 
----
+## Installation and Usage
 
-## 👥 Tim Pengembang (Kelompok 3)
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Andre2404/Road-Hole-Detection.git](https://github.com/Andre2404/Road-Hole-Detection.git)
+    cd Road-Hole-Detection
+    ```
 
-Proyek ini dikerjakan oleh 12 anggota dengan pembagian tugas spesifik pada modul *Deep Learning*, *Computer Vision Logic*, *Frontend Interface*, dan *Data Reporting*.
-
-1. Andre Saputra
-2. Khairunnisa Labibah
-3. Sabtina Arinda Inayah
-4. Adzka Dzikri Imanullah
-5. M. Farid Febriansyah
-6. Primanda Suryawan
-7. Andhika Pratama
-8. Hafizh 'Abid Khalish
-9. Dewi Siti Jamilah
-10. Faiz Lintang Prawira
-11. Sunan Maulana
-12. Rifki Destrizal Nugraha
+2.  **Run the application:**
+    ```bash
+    streamlit run app.py
+    ```
